@@ -1,0 +1,8 @@
+# 환경설정
+vscode 설치경로 C:\Users\601\AppData\Local\Programs
+
+anaconda(python 3.13.5)
+C:\ProgramData\anaconda3\python.exe
+
+anaconda(python 3.10.9)
+C:\Users\601\anaconda3\python.exe

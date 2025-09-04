@@ -1,0 +1,2 @@
+# 환경설정
+vscode 설치경로 C:\Users\601\AppData\Local\Programs
