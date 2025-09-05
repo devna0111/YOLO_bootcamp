@@ -1,19 +1,20 @@
-class Car :
-    car_num = 0 # 전체 instance 개수를 체크하는 스태틱 변수
+class Vehicle :
+    """자동차 대표 클래스"""
+    Vehicle_num = 0 # 전체 instance 개수를 체크하는 스태틱 변수
     def __init__(self, color : str, engine : str, fuel : int) :
         self.color = color
         self.engine = engine
-        Car.car_num +=1
+        Vehicle.Vehicle_num +=1
     
     def __str__(self) :
         return f"{self.color}색 {self.engine} 성능 자동차"
 
-my_car = Car('red','v4',200)
+my_car = Vehicle('red','v4',200)
 print(my_car)
 print(my_car.car_num)
-print(Car.car_num)
+print(Vehicle.car_num)
 
-class SportsCar(Car) :
+class SportsCar(Vehicle) :
     ''' 
     Car 클래스를 상속받아서 SportsCar를 구현
     '''
@@ -23,7 +24,7 @@ class SportsCar(Car) :
         self.fuel = fuel
         self.types = "스포츠카"
         self.engine_state = False
-        Car.car_num +=1
+        Vehicle.Vehicle_num +=1
     
     def engine_start(self) :
         self.engine_state = True
@@ -50,5 +51,5 @@ print(my_sportscar.run(45))
 print(my_sportscar.engine_off())
 print(my_sportscar.run(45))
 print(my_sportscar.engine_off())
-print(Car.car_num)
+print(Vehicle.car_num)
 print(my_sportscar.car_num)

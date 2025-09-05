@@ -6,3 +6,6 @@ C:\ProgramData\anaconda3\python.exe
 
 anaconda(python 3.10.9)
 C:\Users\601\anaconda3\python.exe
+
+anaconda 가상환경 설치 장소
+C:\Users\601\.conda\envs
