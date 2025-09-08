@@ -9,3 +9,17 @@ C:\Users\601\anaconda3\python.exe
 
 anaconda 가상환경 설치 장소
 C:\Users\601\.conda\envs
+
+# 교안등
+https://docs.google.com/spreadsheets/d/1Uxni0saqgCyBS-Tnb0jtW2RMu6xAISbm3LiGtI4V5EQ/edit?gid=0#gid=0
+
+GPU
+NVIDIA GeForce GTX 1060
+
+# 컴퓨터 버젼
+에디션	Windows 10 Pro
+버전	22H2
+설치 날짜	‎2025-‎09-‎03
+OS 빌드	19045.6216
+
+C:\Users\601\AppData\Local\Temp\cuda
