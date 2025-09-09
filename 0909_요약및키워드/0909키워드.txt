@@ -36,3 +36,5 @@ CD Continuos Deploy
 DevOPS와 동일하게 보편적으로 사용, 지속적으로 서비스를 배포해 유지보수
 
 MSA : 마이크로 서비스 아키택쳐 => 서비스를 나눠서 구축하는, 서버, DB 등 분리하는 행위
+
+SSH : Secure SHell
