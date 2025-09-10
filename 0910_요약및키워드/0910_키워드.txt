@@ -4,15 +4,3 @@ PoC : prove of concept _ 컨셉 검증
 
 해쉬 hash : 유일한 고유의 속성
 연관배열 : 리스트 구조와 배열 구조의 집합체. 해쉬 테이블, 해쉬 펑션
-
-git config --global user.name
-git config --global user.email
-
-git remote add origin git-address
-git init
-
-git add .
-git commit -m commit_name
-git push origin [branch]
-
-git pull origin main
