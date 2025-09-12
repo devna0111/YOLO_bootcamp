@@ -1,0 +1,34 @@
+ord(str) => 아스키코드 반환
+
+pip install opencv-python 
+
+import cv2
+
+# VideoCapture() 객체 : 카메라 연동 가능, 비디오 영상 진행 가능!
+# VideoCapture().read() -> bool, np.array()
+# np.array() => img 객체 가능(rgb 내용)
+
+cv2.imshow() : 이미지 쇼
+cv2.imwrite() : 이미지 롸이트
+
+## fourcc = cv.VideoWriter_fourcc(*"DIVX")???
+확장자에 대한 설명...서? 개념
+
+AI_Platform : https://docs.google.com/presentation/d/1fsQE7yGQb3Gi54aPL0grtd6OhgGpu8DNo57Zp4YDGIc/edit?slide=id.p3#slide=id.p3
+
+리눅스 : OS 일종. "감자만 있어도 리눅스는 돌아간다" 데스크탑 확장판 cpu 성능 좋고 램 많음
+서비스 상용 -> 동접자 많아도 버티도록 하는 게 서버의 역할. 인프라로서 버텨야함. del, hp 등
+운영/하드웨어 가격대 엄청나게 비쌈 // 서버의 성능이 중요함. 서버용으로 개발됨. 리소스 가벼움
+오픈소스 => 문제 발생하면 책임지는 인력이 없음 리소스가 덜 들어간다
+
+# 서버/PC의 구분 : stage dev production => Linux 동접자를 버틸 수 있는 배경을 만드는 것
+
+SPA : single page application 한 화면에 데이터를 모두 적재한다 ?? 비동기 방식으로 화면이 바뀌는 걸?? 
+
+RESTful API : 개념적으로, ??? 메서드와 경로가 합쳐진 개념. CRUD를 라우터를 통해 진행한다Django/Flask와 같이 라우트 => 메서드 형태
+
+리눅스 => VMware, VirtualBox
+
+RPA : 자동화하는 것!
+powershell : 고급cmd 기능이 강한 커맨드 프롬프트
+wsl --install [Ubuntu_name]
