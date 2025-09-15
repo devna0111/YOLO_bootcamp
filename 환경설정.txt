@@ -35,3 +35,8 @@ git config --global user.email "{user_email}"
 이후 활용할 repository 생성
 1안 git clone 깃주소
 2안 git remote add origin <연결할 url>
+
+wsl Ubuntu 설치
+linux root name devna0111
+
+## WSL =>cd /mnt/c/ C드라이브 이런 형태로 접속이 가능하다
