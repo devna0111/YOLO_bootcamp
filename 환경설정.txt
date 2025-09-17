@@ -36,7 +36,17 @@ git config --global user.email "{user_email}"
 1안 git clone 깃주소
 2안 git remote add origin <연결할 url>
 
+# Oracle VirtualBox 설치 경
+C:\Program Files\Oracle\VirtualBox
+
 wsl Ubuntu 설치
 linux root name devna0111
 
 ## WSL =>cd /mnt/c/ C드라이브 이런 형태로 접속이 가능하다
+wsl --user root : root로 접속하는방법
+
+# wsl에 miniconda 설치 확인 사이트
+https://www.anaconda.com/docs/getting-started/miniconda/install#macos-linux-installation
+root/miniconda3
+
+tty 터미널(텔레 타입 ***) pts 수도 터미널 시스템? 가상 터미널

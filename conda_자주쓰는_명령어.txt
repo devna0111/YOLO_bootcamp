@@ -1,0 +1,14 @@
+# 가상환경 만들기
+conda create -n env_name python=python_version
+
+# 가상환경 실행
+conda activate env_name
+
+# 가상환경 종료
+conda deactivate env_name
+
+# 가상환경 list 체크
+conda env list
+
+# 가상환경 삭제
+conda env remove env_name
