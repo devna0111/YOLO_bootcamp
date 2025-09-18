@@ -48,10 +48,20 @@ def draw_test5() :
     plt.imshow(img)
     plt.show()
     
-if __name__ == "__main__" :
+# if __name__ == "__main__" :
     # draw_test()
     # import numpy as np
     # print(np.zeros_like((120,120,3)))
     # draw_test3()
     # draw_test4()
-    draw_test5()
+    # draw_test5()
+
+import numpy as np
+import cv2
+from PIL import Image
+
+# _, dst = cv2.threshold()
+# dst_adap = cv2.adaptiveThreshold()
+
+print(cv2.getStructuringElement(3,1,(-1,-1)))
+
