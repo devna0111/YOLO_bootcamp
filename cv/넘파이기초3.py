@@ -64,4 +64,4 @@ from PIL import Image
 # dst_adap = cv2.adaptiveThreshold()
 
 print(cv2.getStructuringElement(3,1,(-1,-1)))
-
+cv2.warpAffine()
