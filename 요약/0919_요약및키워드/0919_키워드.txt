@@ -28,3 +28,5 @@
 동차좌표 => 차원을 1개 추가해서 본다
 
 CV에서 딥러닝은 최적 필터를 찾아내는 과정
+
+SGD 모멘텀 Adagrad NAG Nadam RMSProp 아담
