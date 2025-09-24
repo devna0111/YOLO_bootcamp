@@ -53,3 +53,9 @@ tty 터미널(텔레 타입 ***) pts 수도 터미널 시스템? 가상 터미�
 
 # wsl Utuntu_D conda env dl
 # pip install tensorflow-gpu==2.10.0
+
+# Windows
+MySQL == 8.0.17
+port 번호 3306
+
+root / 12341234

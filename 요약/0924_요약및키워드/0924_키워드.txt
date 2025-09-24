@@ -30,5 +30,13 @@ CNN 기초 강의http://cs231n.stanford.edu/
 
 Fully Connected => FC
 
-CV => SAM : segmentation anything model
+CV => SAM : Segment Anything Model
 => 도로 / 사람 / 배경을 구분하는....
+
+grant revoke DCL
+
+CREATE TABLE `shopdb`.`membertbl` (
+  `memberID` CHAR(8) NOT NULL,
+  `memberName` CHAR(8) NOT NULL,
+  `memberAddress` CHAR(8) NULL,
+  PRIMARY KEY (`memberID`));
