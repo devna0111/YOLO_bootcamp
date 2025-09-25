@@ -10,3 +10,25 @@ Long Short Term Model => 순차데이터의 내부 상태를 단기/장기 기�
 GPT => Generative Pre-Trained Transformers
 
 YOLO => You Only Look Once
+
+mAP : mean Average Precision
+IoU (Intersection over Union) 합집합 내 교집합
+
+SVM => 제일 마지막 노드를 마진 벡터로 만들어서 판별할 수 있는 영역을 만든 후에
+마진벡터가 최대가 되도록 영역을 선정하는 머신러닝 모형
+
+R-CNN => SPPNet(Spatial Pyramid Pooling) =>fast R-CNN => faster R-CNN
+R-CNN : Region Proposal(Selective Search) -> Feature Exraction(ex.227*227)  -> Classification(SVM) -> Bounding Box Regression
+
+RPN => 여러 ROI(2000개)를 Selective Search를 통해 바운딩박스처리하는것??
+
+YOLO => Grid를 만들고 Proposal Region(확률) + 바운딩박스+신뢰도 => 디텍션
+
+ Non-Maximum Suppression (NMS) YOLO v10의 가장 큰 특징 => 요구사항 해당 없으면,
+ 즉 신뢰도가 낮으면 억제한다.
+
+CV에서 SSD => Single Shot Detection
+
+Hard Negative Sampling => 네거티브(다름)을/를 구분해내기 어려운 샘플을 골라내서 학습을 강화한다.
+
+각 피쳐의 위치에 기본 박스를 할당 -> 앵커박스 할당

@@ -59,3 +59,16 @@ MySQL == 8.0.17
 port 번호 3306
 
 root / 12341234
+
+
+D713
+
+wsl 에서 주피터 활성화
+jupyter notebook --ip=0.0.0.0 --no-browser --allow-root 
+
+# wsl에서 opencv 영상이 불가할 때
+sudo apt install x11-apps # 리눅스에서 창 띄우는 방식
+
+# .bashrc에 추가
+echo 'export DISPLAY=:0' >> ~/.bashrc
+source ~/.bashrc
