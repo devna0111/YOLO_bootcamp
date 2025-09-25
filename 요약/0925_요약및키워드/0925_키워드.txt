@@ -1,0 +1,12 @@
+sudo superuser do
+su substitude
+
+ Recurrent Neural Network : RNN 
+=> 순차데이터(시계열속성 등)를 처리하기 위해 내부 상태를 저장하는 순환적 구조를 가진 딥러닝 모델
+
+Long Short Term Model => 순차데이터의 내부 상태를 단기/장기 기억해서 다음 파라미터에 전달하며
+시계열 속성을 유지하는 모델
+
+GPT => Generative Pre-Trained Transformers
+
+YOLO => You Only Look Once
