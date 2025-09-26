@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandMaestro UI/UX Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0F0F23 0%, #1a1a3a 50%, #2d1b69 100%);
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            height: 100vh;
+            display: grid;
+            grid-template-areas: 
+                "header header header"
+                "sidebar main-stage ai-coach"
+                "sidebar controls ai-coach";
+            grid-template-columns: 200px 1fr 280px;
+            grid-template-rows: 60px 1fr 120px;
+            gap: 20px;
+            padding: 0 20px 20px 20px;
+        }
+        
+        .header {
+            grid-area: header;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 15px 15px;
+            border-bottom: 2px solid #6B46C1;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #6B46C1, #F59E0B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10B981;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .sidebar {
+            grid-area: sidebar;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .instrument-selector {
+            margin-bottom: 30px;
+        }
+        
+        .instrument-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .instrument-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .instrument-card.active {
+            background: linear-gradient(45deg, #6B46C1, #8B5CF6);
+            border-color: #F59E0B;
+            box-shadow: 0 4px 20px rgba(107, 70, 193, 0.3);
+        }
+        
+        .instrument-icon {
+            font-size: 20px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .main-stage {
+            grid-area: main-stage;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .camera-view {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 200px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hand-tracking {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+        }
+        
+        .hand-skeleton {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        
+        .hand-point {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #F59E0B;
+            border-radius: 50%;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 5px #F59E0B; }
+            to { box-shadow: 0 0 20px #F59E0B, 0 0 30px #F59E0B; }
+        }
+        
+        .particle-effect {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #6B46C1;
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .gesture-guide {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .current-gesture, .target-gesture {
+            text-align: center;
+        }
+        
+        .gesture-icon {
+            font-size: 40px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .target-gesture .gesture-icon {
+            animation: pulse-scale 1s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-scale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .controls {
+            grid-area: controls;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .volume-bar {
+            width: 100px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .volume-fill {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, #10B981, #F59E0B);
+            border-radius: 3px;
+            animation: volume-pulse 0.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes volume-pulse {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+        
+        .tempo-display {
+            text-align: center;
+        }
+        
+        .bpm {
+            font-size: 24px;
+            font-weight: bold;
+            color: #F59E0B;
+        }
+        
+        .metronome {
+            width: 40px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 5px auto;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .metronome-beat {
+            height: 100%;
+            width: 25%;
+            background: #EF4444;
+            animation: metronome 1s ease-in-out infinite;
+        }
+        
+        @keyframes metronome {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(100%); }
+            50% { transform: translateX(200%); }
+            75% { transform: translateX(300%); }
+            100% { transform: translateX(0); }
+        }
+        
+        .record-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .record-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #EF4444, #F97316);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .record-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+        
+        .ai-coach {
+            grid-area: ai-coach;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .ai-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #6B46C1, #8B5CF6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto;
+            animation: ai-breathe 3s ease-in-out infinite;
+        }
+        
+        @keyframes ai-breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .feedback-bubble {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid #6B46C1;
+            position: relative;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .feedback-bubble::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid #6B46C1;
+        }
+        
+        .progress-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+        }
+        
+        .level-indicator {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .level-text {
+            font-size: 12px;
+            margin-bottom: 8px;
+            color: #F59E0B;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 60%;
+            background: linear-gradient(90deg, #6B46C1, #F59E0B);
+            border-radius: 4px;
+        }
+        
+        .achievements {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+        
+        .achievement-badge {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #F59E0B, #EF4444);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-areas: 
+                    "header header"
+                    "main-stage ai-coach"
+                    "controls controls";
+                grid-template-columns: 1fr 280px;
+                grid-template-rows: 60px 1fr 120px;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-areas: 
+                    "header"
+                    "main-stage"
+                    "controls"
+                    "ai-coach";
+                grid-template-columns: 1fr;
+                grid-template-rows: 60px 1fr auto auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">🎵 HandMaestro</div>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>실시간 연결됨</span>
+            </div>
+        </div>
+        
+        <!-- Sidebar - Instrument Selection -->
+        <div class="sidebar">
+            <div class="instrument-selector">
+                <h3 style="margin-bottom: 15px; font-size: 16px;">악기 선택</h3>
+                
+                <div class="instrument-card active">
+                    <span class="instrument-icon">🎹</span>
+                    <span>피아노</span>
+                </div>
+                
+                <div class="instrument-card">
+                    <span class="instrument-icon">🎸</span>
+                    <span>기타</span>
+                </div>
+                
+                <div class="instrument-card">
+                    <span class="instrument-icon">🥁</span>
+                    <span>드럼</span>
+                </div>
+                
+                <div class="instrument-card">
+                    <span class="instrument-icon">🎻</span>
+                    <span>바이올린</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="margin-bottom: 15px; font-size: 16px;">효과음</h3>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <span style="padding: 5px 10px; background: rgba(255,255,255,0.1); border-radius: 15px; font-size: 12px;">Reverb</span>
+                    <span style="padding: 5px 10px; background: rgba(255,255,255,0.1); border-radius: 15px; font-size: 12px;">Delay</span>
+                    <span style="padding: 5px 10px; background: rgba(255,255,255,0.1); border-radius: 15px; font-size: 12px;">Filter</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Stage -->
+        <div class="main-stage">
+            <!-- Camera View -->
+            <div class="camera-view">
+                <span style="font-size: 14px; opacity: 0.7;">📹 웹캠 뷰</span>
+            </div>
+            
+            <!-- Hand Tracking Visualization -->
+            <div class="hand-tracking">
+                <div class="hand-skeleton">
+                    <!-- Hand landmark points -->
+                    <div class="hand-point" style="top: 20%; left: 30%;"></div>
+                    <div class="hand-point" style="top: 10%; left: 35%;"></div>
+                    <div class="hand-point" style="top: 5%; left: 40%;"></div>
+                    <div class="hand-point" style="top: 15%; left: 45%;"></div>
+                    <div class="hand-point" style="top: 25%; left: 50%;"></div>
+                    
+                    <!-- Particle effects -->
+                    <div class="particle-effect" style="top: 30%; left: 20%; animation-delay: 0s;"></div>
+                    <div class="particle-effect" style="top: 40%; left: 60%; animation-delay: 0.5s;"></div>
+                    <div class="particle-effect" style="top: 60%; left: 40%; animation-delay: 1s;"></div>
+                    <div class="particle-effect" style="top: 70%; left: 70%; animation-delay: 1.5s;"></div>
+                </div>
+            </div>
+            
+            <!-- Gesture Guide -->
+            <div class="gesture-guide">
+                <div class="current-gesture">
+                    <span class="gesture-icon">✋</span>
+                    <div style="font-size: 12px;">현재</div>
+                </div>
+                
+                <div style="font-size: 20px; color: #F59E0B;">→</div>
+                
+                <div class="target-gesture">
+                    <span class="gesture-icon">👉</span>
+                    <div style="font-size: 12px;">기타 모드</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Controls -->
+        <div class="controls">
+            <div class="volume-control">
+                <span style="font-size: 18px;">🔊</span>
+                <div class="volume-bar">
+                    <div class="volume-fill"></div>
+                </div>
+                <span style="font-size: 12px;">75%</span>
+            </div>
+            
+            <div class="tempo-display">
+                <div class="bpm">120</div>
+                <div style="font-size: 12px; margin-bottom: 5px;">BPM</div>
+                <div class="metronome">
+                    <div class="metronome-beat"></div>
+                </div>
+            </div>
+            
+            <div class="record-controls">
+                <button class="record-btn">●</button>
+                <button class="record-btn" style="background: linear-gradient(45deg, #10B981, #059669);">▶</button>
+            </div>
+        </div>
+        
+        <!-- AI Coach -->
+        <div class="ai-coach">
+            <div class="ai-avatar">🤖</div>
+            
+            <div class="feedback-bubble">
+                <div>훌륭해요! 오른손 움직임이 더 부드러워졌네요. 이제 왼손으로 화음을 추가해보세요! 🎵</div>
+            </div>
+            
+            <div class="progress-section">
+                <div class="level-indicator">
+                    <div class="level-text">음악 마에스트로 Lv.3</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+                
+                <div class="achievements">
+                    <div class="achievement-badge">🏆</div>
+                    <div class="achievement-badge">🎵</div>
+                    <div class="achievement-badge">🌟</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple interactive demo
+        document.querySelectorAll('.instrument-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.instrument-card').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Simulate real-time updates
+        setInterval(() => {
+            const bpm = document.querySelector('.bpm');
+            const currentBPM = parseInt(bpm.textContent);
+            bpm.textContent = currentBPM + Math.floor(Math.random() * 10 - 5);
+        }, 2000);
+    </script>
+</body>
+</html>
