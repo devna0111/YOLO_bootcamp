@@ -1,0 +1,12 @@
+[git 명령어 연습]
+git config --global user.name
+git config --global user.email
+
+git remote add origin git-address
+git init
+
+git add .
+git commit -m commit_name
+git push origin [branch]
+
+git pull origin main
