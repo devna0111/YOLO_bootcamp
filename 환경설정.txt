@@ -16,7 +16,7 @@ https://docs.google.com/spreadsheets/d/1Uxni0saqgCyBS-Tnb0jtW2RMu6xAISbm3LiGtI4V
 GPU
 NVIDIA GeForce GTX 1060
 
-# cuda 11.8
+# cuda 12.6
 # %pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
 # 컴퓨터 버젼
