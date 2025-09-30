@@ -1,0 +1,19 @@
+torch : 공식홈페이지 가서 설치 주소를 체크하는 게 가장 효율적
+
+리스트릭트 볼츠만 모델 => 오토 인코더의 원형모델
+
+!! torch 특징
+cpu와 달리 gpu는 텐서와 넘파이 배열 간 연산이 불가능
+
+Stockastic Gradient Descent
+
+Simple linear => 1개 선
+
+Multiple linear => 다량의 선
+
+Polinomial => 다양한 지수를 갖는 식을 기반으로
+
+영상의 밝기 정도 비교 => grayscale로 변환하여 mean 결과를 체크한다.
+0~80: 어두움
+80~170: 보통
+170~255: 밝음
